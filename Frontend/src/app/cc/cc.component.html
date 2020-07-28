@@ -1,0 +1,311 @@
+<h2 >Gráfica de la Curva de Carga</h2>
+<div>
+    <div class="row">
+        <div class="col-lg-1">
+
+        </div>
+        <div class="col-lg-5">
+            <ol>
+                <li>¿Cuál es el consumo mensual de su planilla de servicio eléctrico? [kWh]</li>
+                <br>
+                <div class="form-group">
+                    <input type="text" class="form-control" [(ngModel)]="Consumo">
+                </div>
+                <li>¿Cuantas personas habitan la vivienda? </li>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon">Niños/Adolescentes</span>
+                    <input type="text" class="form-control" [(ngModel)]="Nninos">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">Adultos</span>
+                    <input type="text" class="form-control" [(ngModel)]="Adultos">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">Tercera Edad</span>
+                    <input type="text" class="form-control" [(ngModel)]="TerEdad">
+                </div>
+                <br>
+                <li>¿Cuántos adultos y personas de tercera edad trabajan? </li>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon">Adultos</span>
+                    <input type="text" class="form-control" [(ngModel)]="AdultosM">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">Tercera Edad</span>
+                    <input type="text" class="form-control" [(ngModel)]="TerEdadM">
+                </div>
+                <br>
+            
+                <li>¿En su casa tiene cocina de inducción?</li>
+                <br>
+                <label class="radio-inline">
+                    <input type="radio" value="Si" name="Cocina"  [(ngModel)]="Cocina" >
+                    Si
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" value="No" name="Cocina"  [(ngModel)]="Cocina">
+                    No
+                </label>
+                <br>
+                <br>
+                <li>¿En su casa tiene lavadora?</li>
+                <br>
+                <label class="radio-inline">
+                    <input type="radio" value="Si" name="TLavadora"  [(ngModel)]="TLavadora">
+                    Si
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" value="No" name="TLavadora"  [(ngModel)]="TLavadora">
+                    No
+                </label>
+                <br>
+                <br>
+                <li>¿En su casa tiene secadora de ropa eléctrica?</li>
+                <br>
+                <label class="radio-inline">
+                    <input type="radio" value="Si" name="Secadora" [(ngModel)]="Secadora">
+                    Si
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" value="No" name="Secadora" [(ngModel)]="Secadora">
+                    No
+                </label>
+                <br>
+                <br>
+                <li>¿En su casa tiene calefón o ducha eléctrico?</li>
+                <br>
+                <label class="radio-inline">
+                    <input type="radio" value="Calefonelec" name="Calefon"  [(ngModel)]="Calefon">
+                    Calefón eléctrico
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" value="Duchaelec" name="Calefon"   [(ngModel)]="Calefon">
+                    Ducha eléctica
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" value="Ninguna" name="Calefon"   [(ngModel)]="Calefon">
+                    Ninguno de los anteriores
+                </label>
+                <br>
+                <br>
+                <div class="bt-group-vertical">
+                    <button type='submit' class="btn btn-primary" (click)='Dibujar()'[disabled]='Nninos===0 && Adultos===0 && TerEdad===0 || Cocina===False || TLavadora===False || Consumo===False || Secadora===False || Calefon===False'>Dibujar</button>
+                    <br>
+                    
+                </div>
+                
+                </ol>
+                <br>
+                <br>
+                <div class="container">
+                    <div>
+                        <p *ngIf='AdultosMM' class='Rojo'>{{AdultosMM}} </p> 
+                    </div>
+                    <br>
+                    <div>
+                        <p *ngIf='TerEdadMM' class='Rojo'>{{TerEdadMM}} </p> 
+                    </div>
+                </div>
+                <br>
+        </div>
+        <div class="col-lg-5">
+            <br>
+            <p>El valor de Consumo requerido en la pregunta 1 puede ser encontrado en la planilla eléctrica donde se muestra en la siguiente imagen (Si aparece más de un valor, ingresar la sumatoria de todos los valores):</p>
+            <br>
+            <hr>
+            <br>
+            <div class="base1">
+                <img src="assets/img/Planilla.jpeg" alt="Planilla" style="max-width: 100%;">
+            </div>
+        </div>
+        <div class="col-lg-1">
+
+        </div>
+        <div class="container">
+            <div class="col-lg-12">
+                <canvas baseChart   
+                [datasets]="lineChartData"
+                [labels]="lineChartLabels"
+                [options]="lineChartOptions"
+                [colors]="lineChartColors"
+                [legend]="lineChartLegend"
+                [chartType]="lineChartType"
+                [plugins]="lineChartPlugins"></canvas>
+            </div>
+        </div>
+        
+        
+    
+        
+       
+        
+            <div class="row">
+                <div class="col-lg-9">
+
+                </div>
+                <div class="col-lg-3">
+                    <button (click)="onSelect('Calculos')"  class="btn btn-primary" [disabled]='Nninos===0 && Adultos===0 && TerEdad===0 || AdultosC===0 || TerEdadC==0 || Cocina===False || TLavadora===False || Consumo===False || Secadora===False || Calefon===False || BT===0'>Siguiente</button>
+                </div>
+            </div>
+        <br>
+        <br>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container">
+    <h2>Gráfica de la curva de carga</h2>
+    <br>
+</div>
+
+<div class="contenedor">
+    <div class="row">
+        <ol>
+        <div class="col-lg-4">
+                <li>¿Cuál es el consumo total de su planilla de servicio eléctrico mensual? [kWh]</li>
+                <br>
+                <div class="form-group">
+                    <input type="text" class="form-control" style='width:275px' [(ngModel)]="Consumo">
+                </div>
+                <li>¿Cuantas personas forman el hogar? </li>
+                <br>
+                <div class="input-group">
+                    <span class="input-group-addon">Niños/Adolescentes</span>
+                    <input type="text" class="form-control" style='width:125px' [(ngModel)]="Nninos">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">Adultos</span>
+                    <input type="text" class="form-control" style='width:201px' [(ngModel)]="Adultos">
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon">Tercera edad</span>
+                    <input type="text" class="form-control" style='width:166px' [(ngModel)]="TerEdad">
+                </div>
+                <br>
+        </div>
+
+        <div class="col-lg-2"></div>
+
+        <div class="col-lg-4">
+                <li>¿En su casa tiene cocina de inducción?</li>
+                <br>
+                <label class="radio-inline">
+                    <input type="radio" value="Si" name="Cocina"  [(ngModel)]="Cocina" >
+                    Si
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" value="No" name="Cocina"  [(ngModel)]="Cocina">
+                    No
+                </label>
+                <br>
+                <br>
+                <li>¿En su casa tiene lavadora de ropa?</li>
+                <br>
+                <label class="radio-inline">
+                    <input type="radio" value="Si" name="TLavadora"  [(ngModel)]="TLavadora">
+                    Si
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" value="No" name="TLavadora"  [(ngModel)]="TLavadora">
+                    No
+                </label>
+                <br>
+                <br>
+                <li>¿En su casa tiene secadora de ropa eléctrica?</li>
+                <br>
+                <label class="radio-inline">
+                    <input type="radio" value="Si" name="Secadora" [(ngModel)]="Secadora">
+                    Si
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" value="No" name="Secadora" [(ngModel)]="Secadora">
+                    No
+                </label>
+                <br>
+                <br>
+                <li>¿En su casa tiene calefón eléctrico?</li>
+                <br>
+                <label class="radio-inline">
+                    <input type="radio" value="Si" name="Calefon"  [(ngModel)]="Calefon">
+                    Si
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" value="No" name="Calefon"   [(ngModel)]="Calefon">
+                    No
+                </label>
+                <br>
+                <br>
+        </div>
+        </ol>
+    </div>
+</div>
+
+<div class="contenedor">
+    <div class="row">
+        <button type="button" class="btn btn-primary" style='width:600px' [disabled]='Nninos===0 && Adultos===0 && TerEdad===0 || Cocina===False || TLavadora===False || Consumo===False || Secadora===False || Calefon===False'
+        
+        (click)='Dibujar()'>Dibujar</button>
+    </div>
+</div>
+
+
+
+<div class="col-lg-12">    
+    <div>  
+        <br>     
+        <canvas baseChart         
+        [datasets]="lineChartData" 
+        [labels]="lineChartLabels" 
+        [options]="lineChartOptions"
+        [colors]="lineChartColors" 
+        [legend]="lineChartLegend" 
+        [chartType]="lineChartType" 
+        [plugins]="lineChartPlugins">
+        </canvas>
+    </div>
+    <div class="text-right">
+        <br>
+        <button (click)="onSelect('Calculos')" class="btn btn-primary" [disabled]='Nninos===0 && Adultos===0 && TerEdad===0'>Siguiente</button>
+    </div>
+    <br>
+</div> -->
+
+ <!-- <li>¿Cuantas personas viven en la casa?</li>
+                <br>
+                <label class="radio-inline">
+                    <input type="radio" value="1" name="NPer"  [(ngModel)]="NPer">
+                    1
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" value="2" name="NPer"  [(ngModel)]="NPer">
+                    2
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" value="3+" name="NPer"  [(ngModel)]="NPer">
+                    3+
+                </label>
+                <br>
+                <br>
+                <li>¿En su casa hay personas que se encuentran cursando estudios de colegio (una persona que se encuentre en la casa en la media tarde)?</li>
+                <br>
+                <label class="radio-inline">
+                    <input type="radio" value="Si" name="Tarde"  [(ngModel)]="Tarde">
+                    Si
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" value="No" name="Tarde"  [(ngModel)]="Tarde">
+                    No 
+                </label>
+                <br>
+                <br> -->

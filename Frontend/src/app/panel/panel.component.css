@@ -1,0 +1,70 @@
+.myChart{
+   width: 10490px;
+  }
+
+.myChartWrapper{
+  width: 850px;
+  overflow: auto;
+  }
+
+  h2{
+    text-align: center;
+}
+.padd{
+ background-color: blanchedalmond;
+  padding: 20px 40px 20px 20px;
+  border: 1px solid black ;
+  border-radius: 10px;
+}
+h6{
+  color: #000;;
+}
+.NN{
+  color: #000;
+  font-weight: bold;
+}
+.bla{
+  color: #000;
+}
+.Resultado{
+  display: flex;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 8px;
+  justify-content: space-between;
+  background-color: #ff9a76;
+  color: white;
+}
+
+.bnc{
+  font-weight: bold;
+  text-align: center;
+}
+
+.bnc1{
+  font-weight: bold;
+  text-align: center;
+  color: #000;
+}
+
+.centrado{
+  display:inline-block;
+  text-align:center
+}
+
+.contenedor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  }
+  
+.rotul{
+  display: flex;
+  justify-content: center;
+}
+.cr{
+  color: red;
+}
+.cv{
+  color: #21bf73;
+}

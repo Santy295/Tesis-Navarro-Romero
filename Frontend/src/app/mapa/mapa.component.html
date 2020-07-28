@@ -1,0 +1,66 @@
+<h2>Ubicación residencial y cálculo de área</h2>
+
+<div class="container">
+    <p>Los límites en los que trabaja este programa en términos geográficos son:</p>
+    <br>
+    <div class="centrar">
+        <div class="row">
+            <div class="col-lg-12">
+                <img src="assets/img/Mapa.jpeg" alt="limites" style="max-width: 600px; max-height: 600px;">
+            </div>
+        </div>
+       
+    </div>
+   
+</div>
+<br>
+<br>
+<ul>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="container">
+        <li> En el mapa, busque su residencia y enciérrela con puntos (click). Recuerde cerrar la figura con el botón debajo del mapa y no manualmente </li>
+        <br>
+        <div #mapContainer id="map" 
+        ></div>
+    </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="container">
+            <!-- <hr> -->
+            <!-- La latitud es {{ latf }} y  la longitud es {{ lngf }} -->
+            <hr>
+            <li>Use los siguiente botones para reiniciar el mapa si cometió un error al escoger los puntos, o para cerrar el polígono dibujado</li>
+            <br>
+            <div class="btn-group" >
+                <div class="container">
+                    <div class="butn">
+                      
+                        
+                            <button (click)='closePath()' class="btn btn-primary">Cerrar polígono</button>
+                      
+                            <button (click)='reload()' class="btn btn-danger" >Reiniciar mapa</button>
+                     
+                       
+                    </div>
+                </div>
+                
+                <br>
+               
+            </div>
+            <hr>
+            <li>El botón de "Calcular área" solo se habilita al dibujar un polígono cerrado.</li>
+            <br>
+            <button (click)='calcularA()' class='btn btn-success' [disabled]='!cal'>Calcular área</button>
+            <br>
+            <br>
+            <p *ngIf='Area1'>Área es {{Area1}} [m<sup>2</sup>].</p> 
+            <hr>
+           <li> El botón "Siguiente" solo se habilita al haber calculado el área.</li>
+           <br>
+            <button (click)="onSelect('CC')" class="btn btn-primary" [disabled]='!Area1'>Siguiente</button>
+            
+        </div>
+    </div>
+</div>
+</ul>

@@ -1,0 +1,40 @@
+<app-header (featureSelected)='onNavigate($event)'></app-header>
+<app-mapa *ngIf="ListenedFeature === 'mapa'"
+(featureSelected)='onNavigate($event)'
+(Latitudenv)='Latitudresi($event)'
+(Longitudenv)='Longitudresi($event)'
+(Areaenv)='Arearesi($event)'
+></app-mapa>
+
+<app-cc *ngIf="ListenedFeature === 'CC'"
+(featureSelected)='onNavigate($event)'
+(Consumoenv)='Consumoresi($event)'
+(Ninosenv)='Ninosresi($event)'
+(Adultosenv)='Adultosresi($event)'
+(Ancianosenv)='Ancianosresi($event)'
+(AdultosTenv)='AdultosTresi($event)'
+(AncianosTenv)='AncianosTresi($event)'
+(P1env)='P1resi($event)'
+(P2env)='P2resi($event)'
+(P3env)='P3resi($event)'
+(P4env)='P4resi($event)'
+(Vectorenv)='Vectorresi($event)'
+></app-cc>
+
+<app-panel *ngIf="ListenedFeature === 'Calculos'"
+(featureSelected)='onNavigate($event)'
+[Latitud2]='Latitud'
+[Longitud2]='Longitud'
+[Area2]='Area'
+[Consumo2]='Consumo'
+[Ninos2]='Ninos'
+[Adultos2]='Adultos'
+[Ancianos2]='Ancianos'
+[AdultosT2]='AdultosT'
+[AncianosT2]='AncianosT'
+[P12]='P1'
+[P22]='P2'
+[P32]='P3'
+[P42]='P4'
+[Vector2]='Vector'
+></app-panel>

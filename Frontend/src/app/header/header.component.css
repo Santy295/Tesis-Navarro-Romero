@@ -1,0 +1,13 @@
+
+.base1 {
+    background-color: #151965;
+    color: white;
+    font-family: 'Times New Roman', sans-serif;
+    padding-top: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 25px;
+    border-radius: 5px;
+    text-align: center;
+}
+

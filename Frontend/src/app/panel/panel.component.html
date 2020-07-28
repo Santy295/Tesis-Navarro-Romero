@@ -1,0 +1,285 @@
+<div class="container"> 
+    <h2>  Simulación fotovoltaica</h2>
+    <br>
+</div>
+
+<div class="container">
+    <div *ngIf="'calculos'">
+        <div class="row">
+            <div class="col-sm-1">
+                <!-- <div class="padd" >
+                <p class="text-left">
+                    <h5 class="text-info" class="NN"> Consideraciones: </h5>
+                    <h6 class="text-info"> - Ángulo de inclinación del panel: 10° </h6>
+                    <h6 class="text-info"> - Rendimiento: Pr = 72% </h6>
+                    <h6 class="text-info"> - Tasa de interés: i = 13% </h6>
+                    <h6 class="text-info"> - Vida del proyecto: n = 20 [años] </h6>
+                </div> -->
+            </div>
+            <div class="col-sm-5">
+                <div class="padd">
+                    <br>
+                    <h5 ALIGN="justify">El costo por Watt pico, es el precio de instalación de un panel solar capaz de generar un Watt de electricidad, considerando el costo de componentes y el de instalación del equipo.</h5>
+                    <br>
+                </div>     
+            </div> 
+            <div class="col-sm-5">
+                <div class="padd">
+                    <ol>
+                        <h5 class="NN">Señale un costo por Watt pico:</h5>
+                        <br>
+                        <ng5-slider [(value)]="Costo" [options]="options"></ng5-slider>  
+                    </ol>
+                    </div>
+            </div>
+            <div class="col-lg-1"></div> 
+        </div>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-5">
+                <div class="padd">
+                    <br>
+                    <h5 ALIGN="justify">Al momento de realizar la construcción de la instalación fotovoltaica, puede escoger un porcentaje de inversión de su bolsillo, el resto será calculado como si fuera un prestamo a un banco.</h5>
+                    <br>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="padd">
+                <ol>
+                    <h5 class="NN">Señale el porcentaje de inversión propio que desee:</h5>
+                    <br>
+                    <ng5-slider [(value)]="Porcinver" [options]="options1"></ng5-slider>  
+                </ol>
+                </div>
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+        <hr>
+        <br>
+        <div class="contenedor">
+            <button (click)='calcular()' class="btn btn-primary btn-block btn-lg" style='width:400px'> Simular </button>
+        </div>
+        <hr>
+    </div>
+</div>
+
+<br>
+<div *ngIf="LCOE">
+   
+            <div class="container Resultado">
+                    
+                <div class="column">
+                    <br>
+                    <br>
+                    <br>
+                    <h5 class="bla"> Coordenadas geográficas: ({{Lat}},{{Long}}) </h5>
+                    <h5 class="bla"> Area: {{Area2}} [m<sup>2</sup>]</h5>
+                </div>
+                <div class="column">
+                    <div class="bnc1">  
+                    <h4>Datos ingresados por el usuario</h4>
+                    </div>
+                    <br>
+                    <h5 class="bla"> Consumo mensual: {{Consumo2}} [kWh]</h5>
+                    <h5 class="bla"> Número de personas:  {{PTotal}} </h5>
+                </div>
+                <div class="column">
+                    <br>
+                    <br>
+                    <br>
+                    <h5 class="bla"> Costo Wp: {{Costo}} [USD/W<sub>pico</sub>] </h5>
+                    <h5 class="bla"> Porcentaje de inversión propio: {{Porcinver}}%</h5>
+                    
+                </div>
+        
+            </div>
+   
+</div>
+<br>
+<br>
+<div *ngIf="LCOE">
+    <div >
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-5">
+               
+                <div class="padd">
+    
+                    <div class="bnc">  
+                        <h4 class="bla">Resultado técnico - Datos</h4>
+                        </div>
+                    <h5 class="bla">Potencia requerida: {{WpRequeridoC}} [W<sub>p</sub>]</h5>
+                    <h5 class="bla">Potencia instalable: {{WpDisponibleC}} [W<sub>p</sub>]</h5>
+                    <p class="bla"> Datos estimados:</p>
+                    <h5 class="bla"> Ahorro mensual: {{AhorroMensual}} [USD/mes]</h5>
+                    <h5 class="bla"> Consumo mensual: {{Consumo2}} [kWh/mes]</h5>
+                    <h5 class="bla"> Generación anual: {{GenA}} [kWh/año]</h5>
+                    <h5 class="bla"> Generación mensual promedio: {{GenM}} [kWh/mes]</h5>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="padd">
+    
+                    <div class="bnc">  
+                        <h4 class="bla">Resultado técnico - Explicación</h4>
+                        </div>
+                        <br>
+                    <h5 class="bla">Potencia requerida: Potencia necesaria para satisfacer su consumo.</h5>
+                    <h5 class="bla">Potencia instalable: Potencia que se puede instalar tomando en cuenta el área de su vivienda</h5>
+                    <h5 class="bla">Datos estimados:</h5>
+                    <h5 class="NN">{{mWp}}</h5>
+                    <br>
+                    
+                    
+                </div>
+            </div>
+            <div class="col-lg-1"></div>
+           
+        <br>
+        <div class="row"></div>
+        <br>
+        </div>   
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-5">
+                <div class="padd">
+                    <div class="bnc">  
+                        <h4 class="bla">Resultados económico - Datos</h4>
+                    </div>
+                    <br>
+                    <h5 class="bla"> Inversión total: {{Inversion}} [USD]</h5>
+                    <h5 class="bla"> Costo nivelado de energía: {{LCOE}} [cent/kWh]</h5>
+                    <h5 class="bla"> TIR: {{TIR}}%</h5>
+                    <h5 class="bla"> VAN: {{VANS}} [USD]</h5>
+                    <h5 class="bla"> Tasa de descuento: 13%</h5>
+                    <h5 class="bla"> Tiempo de recuperación de inversión: {{TRI}} años</h5>
+                    <br>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="padd">
+                    <div class="bnc">  
+                        <h4 class="bla">Resultados económico - Explicación</h4>
+                    </div>
+                    <h5 class="bla"> Inversión total: La inversión necesaria para la instalación del sistema fotovoltaico</h5>
+                    <h5 class="bla"> Costo nivelado de energía: Es el costo real de la energía durante la vida útil de la instalación.</h5>
+                    <h5 class="bla"> TIR y Tasa de descuento: Indicativos financieros, proyecto rentable si TIR es mayor a tasa de descuento.</h5>
+                    <h5 class="bla"> VAN: Valor actual neto, es el valor monetario del proyecto en el año 0. Mustra ganancia o perdida.</h5>
+                    <h5 class="bla"> Tiempo de recuperación de inversión: Tiempo en el cual se recupera la inversión del usuario de manera pasiva.</h5>
+                </div>
+            </div>
+            <div class="col-lg-1"></div>
+        </div>       
+       
+    </div>
+</div>
+
+<br>
+<div class="row">
+    <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+            <div *ngIf="LCOE">
+                <div class="padd">
+                 
+                    <div class="column">
+                       <h4 class="bla">Análisis</h4>
+                       <h5 class="bla">{{ATTd}}</h5>
+                       <h5 class="bla">{{ AVAN}}</h5>
+                       <h4 class="bla">Recomendaciones</h4>
+                       <h5 class="bla">{{ Recom}}</h5>
+                 
+                    </div>
+                 
+            
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-1"></div>
+</div>
+
+
+<hr>
+<br>
+<br>
+
+<div class="container">
+    <p>Utilice los siguientes botones para gráficar por mes:</p>
+    <div class="contenedor">
+        <div class="row">
+            <div class="col-lg-12">
+                <br>
+                <div class="btn-group">
+                 <button type="button" class="btn btn-light" (click)='Enero()'>Enero</button>
+                 <button type="button" class="btn btn-light" (click)='Febrero()'>Febrero</button>
+                 <button type="button" class="btn btn-light" (click)='Marzo()'>Marzo</button>
+                 <button type="button" class="btn btn-light" (click)='Abril()'>Abril</button>
+                 <button type="button" class="btn btn-light" (click)='Mayo()'>Mayo</button>
+                 <button type="button" class="btn btn-light" (click)='Junio()'>Junio</button>
+                 <button type="button" class="btn btn-light" (click)='Julio()'>Julio</button>
+                 <button type="button" class="btn btn-light" (click)='Agosto()'>Agosto</button>
+                 <button type="button" class="btn btn-light" (click)='Septiembre()'>Septiembre</button>
+                 <button type="button" class="btn btn-light" (click)='Octubre()'>Octubre</button>
+                 <button type="button" class="btn btn-light" (click)='Noviembre()'>Noviembre</button>
+                 <button type="button" class="btn btn-light" (click)='Diciembre()'>Diciembre</button>
+               </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container" class="rotul">
+        <div class="figuras" class="cr">
+          <p>---- Consumo [Wh]</p>
+        </div>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        <div class="figuras" class="cv">
+          <p>---- Generación [Wh]</p>
+      </div>
+    </div>
+
+    <div class="contenedor">
+        <div class="row">
+            <div class="col-lg-12">
+                 <div class="myChartWrapper">
+                     <div class="myChart">
+                         <canvas baseChart 
+                         height="12px"
+                         [datasets]="lineChartData" 
+                         [labels]="lineChartLabels" 
+                         [options]="lineChartOptions"
+                         [colors]="lineChartColors" 
+                         [legend]="lineChartLegend" 
+                         [chartType]="lineChartType" 
+                         [plugins]="lineChartPlugins">
+                         </canvas>
+                     </div>
+                 </div>
+             </div>
+        </div>
+    </div>
+   <br>
+</div> 
+<hr>
+
+<div class="container">
+    <p> Grafico de barras</p>
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10">
+        <div style="display: block">
+            <canvas baseChart
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [options]="barChartOptions"
+              [plugins]="barChartPlugins"
+              [legend]="barChartLegend"
+              [chartType]="barChartType">
+            </canvas>
+          </div>
+    </div>
+    <div class="col-lg-1"></div>
+</div>
+<br>
+<br>

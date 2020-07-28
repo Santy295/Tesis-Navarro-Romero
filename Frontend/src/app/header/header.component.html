@@ -1,0 +1,58 @@
+<div>
+    <div class="row">
+        <div class="col-xs-12 col-s-3 col-md-3 col-lg-3">
+            <div class="base1">
+                <img src="assets/img/logo-EPN-blanco.png" alt="Logo EPN" style="max-width: 100%;">
+            </div>
+        </div>
+        <div class="col-xs-12 col-s-6 col-md-6 col-lg-6">
+            <div class="base1">
+                <div class="text-center">
+                    <h3>Simulación y análisis energético de sistemas solares fotovoltaicos para generación distribuida en el Distrito Metropolitano de Quito</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-s-3 col-md-3 col-lg-3">
+            <div class="base1">
+                <img src="assets/img/FIM.png" alt="FIM" style="max-width: 100%;" style="width: 110px;">
+            </div>
+        </div>
+    </div>
+</div>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <!-- <button type="button" class="navbar-toggle" (click)="collapsed = !collapsed">
+              <span class="icon-bar" *ngFor="let iconBar of [1, 2, 3]"></span>
+            </button>
+            <a routerLink="/" class="navbar-brand">Sistema Fotovoltaico</a>
+            <button type="button" class="navbar-toggle" (click)="Descargar()">
+                <span class="icon-bar" *ngFor="let iconBar of [1, 2, 3]"></span>
+              </button>
+              <a routerLink="/" class="navbar-brand">Descargar registro</a> -->
+            <div class="navbar-collapse" [class.collapse]="collapsed" (window:resize)="collapsed = true">
+            <ul class="nav navbar-nav">
+                <li><a href="#" (click)="onSelect('mapa')">Sistema fotovoltaico</a></li>
+                <li><a href="#" (click)="exportPdf()">Manual técnico</a></li>
+                <li><a href="#" (click)="Descargar()">Descargar registro</a></li>
+            </ul>
+        </div>
+        </div>
+          <!-- <div class="navbar-collapse" [class.collapse]="collapsed" (window:resize)="collapsed = true">
+            <ul class="nav navbar-nav">
+                <li><a href="#" (click)="onSelect('mapa')">Mapa</a></li>
+                <li><a href="#" (click)="onSelect('CC')">Curva de Carga</a></li>
+                <li><a href="#" (click)="onSelect('Calculos')">Valores Calculados</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" role="buttom">Menu <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Guardar datos</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div> -->
+    </div>
+</nav>
