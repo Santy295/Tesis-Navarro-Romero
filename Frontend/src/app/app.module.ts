@@ -8,7 +8,6 @@ import { Ng5SliderModule } from 'ng5-slider';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { CurvascargasComponent } from './curvascargas/curvascargas.component';
 import { MapaComponent } from './mapa/mapa.component';
 import { PanelComponent } from './panel/panel.component';
 import { RadService } from'./services/rad.service';
@@ -19,7 +18,6 @@ import { CCComponent } from './cc/cc.component';
   declarations: [
     AppComponent,
     HeaderComponent,
-    CurvascargasComponent,
     MapaComponent,
     PanelComponent,
     CCComponent

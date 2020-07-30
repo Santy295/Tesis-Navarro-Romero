@@ -38,6 +38,7 @@ export class CCComponent implements OnInit {
    TerEdad=0;
    AdultosM=0;
    TerEdadM=0;
+   False=false;
  
    //Mensaje error
    AdultosMM;
